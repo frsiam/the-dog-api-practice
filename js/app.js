@@ -6,11 +6,9 @@ const loadDog = () => {
 }
 
 const displayDog = dogs => {
-    // console.log(allDogs);
     const dogCard = document.getElementById('dog-card');
-    const allDogs = dogs.slice(0,12)
+    const allDogs = dogs.slice(0,45)
     for(const dog of allDogs){
-        console.log(dog);
         const div = document.createElement('div')
         div.classList.add('col')
         div.innerHTML = `
@@ -21,7 +19,7 @@ const displayDog = dogs => {
                 <p class="card-text">${dog.temperament}</p>
             </div>
             <div class='text-center mb-3'>
-                <button onclick="getTheUrl(${dog.id})" type="button" class="btn btn-primary py-2 px-5"   data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <button onclick="getTheUrl(${dog.id})" type="button" class="btn btn-outline-success text-white py-2 px-5"   data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 See Details
                 </button>
             </div>
@@ -32,7 +30,6 @@ const displayDog = dogs => {
 }
 
 const getTheUrl = dogId => {
-    console.log(dogId)
     const url = `https://api.thedogapi.com/v1/breeds/${dogId}`
     fetch(url)
         .then(res => res.json())
@@ -40,7 +37,6 @@ const getTheUrl = dogId => {
 }
 
 const showDetails = singleDog => {
-    console.log(singleDog)
     const detailsDiv = document.getElementById('staticBackdrop')
     document.getElementById('staticBackdrop').textContent = ''
     const newDiv = document.createElement('div')
